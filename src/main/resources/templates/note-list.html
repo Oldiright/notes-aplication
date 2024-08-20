@@ -8,7 +8,7 @@
     <style>
 
         header {
-        padding: 100px 0;
+        padding: 100px 0px 5px 0px;
         background: #05b1b1;
         background: -moz-linear-gradient(left, #05b1b1 0%, #52339a 100%);
         background: -webkit-linear-gradient(left, #05b1b1 0%, #52339a 100%);
@@ -32,9 +32,18 @@
             <div class="col-12">
                 <h1 class="text-center text-white">Менеджер нотаток GoIT 17</h1>
                 <div class="button">
+                    <a type="button" class="btn btn-secondary" style="margin-right: 5px;" href="/note/list">Переглянути всі нотатки</a>
                     <a type="button" class="btn btn-light" href="/note/create">Створити нову нотатку</a>
                 </div>
             </div>
+        </div>
+    </div>
+    <div>
+        <div style="justify-content: right; display: flex; align-items: right; margin: 30px 30px 30px;">
+            <form action="/note/findById" method="post" style="display: flex;">
+                <input type="text" class="form-control" style="margin: auto 15px auto; width: 20rem" id="idForSearch" name="id" placeholder="Введіть ID для пошуку">
+                <button type="submit" class="btn btn-secondary">Пошук</button>
+            </form>
         </div>
     </div>
 </header>
@@ -57,7 +66,9 @@
         </div>
     </div>
 </div>
-
+<div th:if="${action == 'NotFound'}">
+    <p>Note not found!</p>
+</div>
 <div th:if="${action == 'startEditing'}">
     <div class="card" style="width: 80rem">
         <div class="card-body">

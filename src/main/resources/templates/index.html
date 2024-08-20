@@ -28,12 +28,19 @@
     <div class="container">
         <div class="row">
            <div class="col-12">
-               <h1 class="text-center text-white">Менеджер нотаток GoIT 17</h1>
+                    <h1 class="text-center text-white">Менеджер нотаток GoIT 17</h1>
 
                     <div class="button">
-                         <a type="button" class="btn btn-secondary" href="/note/list">Переглянути нотатки</a>
+                         <a type="button" class="btn btn-secondary" style="margin-right: 5px;" href="/note/list">Переглянути всі нотатки</a>
                          <a type="button" class="btn btn-light" href="/note/create">Створити нову нотатку</a>
                     </div>
+                    <div style="justify-content: center; display: flex; align-items: center; margin: 30px 30px 30px;">
+                        <form action="/note/findById" method="post" style="display: flex;">
+                            <input type="text" class="form-control" style="margin: auto 15px auto; width: 60rem" id="idForSearch" name="id" placeholder="Введіть ID для пошуку">
+                            <button type="submit" class="btn btn-secondary">Пошук</button>
+                        </form>
+                    </div>
+
            </div>
         </div>
     </div>
