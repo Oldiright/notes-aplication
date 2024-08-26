@@ -3,6 +3,8 @@ import com.example.notes_aplication.model.entity.Note;
 import com.example.notes_aplication.model.entity.NoteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -25,8 +27,12 @@ public class NoteService {
         repository.deleteById(id);
 
     }
+    @Transactional
     public Note update(Note note) {
-        return  repository.save(note);
+        Note updatedNote = repository.findById(note.getId()).orElseThrow();
+        updatedNote.setTitle(note.getTitle());
+        updatedNote.setContent(note.getContent());
+        return updatedNote;
     }
 
     public Note getById(long id){
